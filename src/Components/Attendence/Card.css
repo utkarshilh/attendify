@@ -1,0 +1,50 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    width: 60%; /* Adjust width to occupy 60% of the screen */
+    max-width: 700px; /* Maximum width to ensure it doesn't exceed the desired size */
+  }
+  
+  .info {
+    margin-bottom: 10px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .attendance-button {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+  }
+  
+  .attendance-button.present {
+    background-color: #5cb85c;
+  }
+  
+  .attendance-button.absent {
+    background-color: #d9534f;
+  }
+  
+  .attendance-button.active {
+    border: 2px solid #000;
+  }
+  
+  .info p {
+    margin: 5px 0;
+  }
+  
