@@ -16,28 +16,44 @@ const Card = ({ name, rollNo }) => {
         {
             roll: 3,
             name: "kiran"
+        },
+        {
+            roll: 4,
+            name: "shikhar"
+
+        },
+        {
+            roll: 5,
+            name: "shikhar"
+        },
+        {
+            roll: 6,
+            name: "hitj"
         }
     ])
 
-    const [i, setI] = useState(0);
-
-
-
+    const [i, setI] = useState(1);
     // Countdown timer effect
     useEffect(() => {
-        if (timeLeft === 0)
-            setI(i + 1)
         const timer = setInterval(() => {
             setTimeLeft((prevTime) => prevTime > 0 ? prevTime - 1 : 0);
         }, 1000);
         return () => clearInterval(timer);
     }, []);
 
+    useEffect(() => {
+        if (timeLeft === 0) {
+            setI((prevI) => (prevI + 1) % students.length);
+            setPresent(false);
+            setTimeLeft(10);
+
+
+        }
+    }, [timeLeft])
+
     // Toggle Present/Absent status
     const toggleAttendance = (attendance) => {
         if (attendance === 'present') {
-            setI(i += 1);
-            console.log(i);
 
             setPresent(true);
 

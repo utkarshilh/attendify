@@ -7,7 +7,6 @@ import Main from './Components/Attendence/Main';
 function App() {
   return (
     <div className="App">
-
       <Main />
     </div>
   );
