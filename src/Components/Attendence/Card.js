@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Card.css'; // Import scoped CSS file
 
 const Card = ({ name, rollNo }) => {
+    const [buttonClicked, setButtonClicked] = useState(false);
+
     const [present, setPresent] = useState(false); // Default present status to false
     const [timeLeft, setTimeLeft] = useState(10); // Initial time left
     const [students, setStudents] = useState([
@@ -49,13 +51,24 @@ const Card = ({ name, rollNo }) => {
 
 
         }
-    }, [timeLeft])
+        if (buttonClicked === true) {
+            setI((prevI) => (prevI + 1) % students.length);
+            setTimeLeft(10);
+            setButtonClicked(false);
+
+        }
+    }, [timeLeft, buttonClicked])
+
+
 
     // Toggle Present/Absent status
     const toggleAttendance = (attendance) => {
+        setButtonClicked(true);
         if (attendance === 'present') {
 
             setPresent(true);
+
+
 
         } else {
             setPresent(false);
