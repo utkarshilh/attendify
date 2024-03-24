@@ -3,6 +3,7 @@ import './Card.css'; // Import scoped CSS file
 
 const Card = ({ name, rollNo }) => {
     const [buttonClicked, setButtonClicked] = useState(false);
+    const [attendanceRecords, setAttendanceRecords] = useState([]); // State to store attendance records
 
     const [present, setPresent] = useState(false); // Default present status to false
     const [timeLeft, setTimeLeft] = useState(10); // Initial time left
@@ -34,7 +35,8 @@ const Card = ({ name, rollNo }) => {
         }
     ])
 
-    const [i, setI] = useState(1);
+    const [i, setI] = useState(0); // Initialize index i with 0
+
     // Countdown timer effect
     useEffect(() => {
         const timer = setInterval(() => {
@@ -45,34 +47,34 @@ const Card = ({ name, rollNo }) => {
 
     useEffect(() => {
         if (timeLeft === 0) {
-            setI((prevI) => (prevI + 1) % students.length);
-            setPresent(false);
+            // If timer reaches 0, record attendance as absent
+            recordAttendance('absent');
             setTimeLeft(10);
-
-
         }
         if (buttonClicked === true) {
-            setI((prevI) => (prevI + 1) % students.length);
-            setTimeLeft(10);
+            // If button is clicked, record attendance based on present status
+            recordAttendance(present ? 'present' : 'absent');
             setButtonClicked(false);
-
+            setTimeLeft(10);
         }
-    }, [timeLeft, buttonClicked])
+    }, [timeLeft, buttonClicked, present]);
 
-
+    // Function to record attendance
+    const recordAttendance = (status) => {
+        const record = {
+            name: students[i].name,
+            roll: students[i].roll,
+            status: status
+        };
+        setAttendanceRecords(prevRecords => [...prevRecords, record]);
+        setI((prevI) => (prevI + 1) % students.length);
+        console.log(attendanceRecords)
+    };
 
     // Toggle Present/Absent status
     const toggleAttendance = (attendance) => {
         setButtonClicked(true);
-        if (attendance === 'present') {
-
-            setPresent(true);
-
-
-
-        } else {
-            setPresent(false);
-        }
+        setPresent(attendance === 'present' ? true : false);
     };
 
     return (
@@ -82,7 +84,6 @@ const Card = ({ name, rollNo }) => {
                     <h1>{timeLeft}</h1>
                     <p>Name: {students[i].name}</p>
                     <p>Roll No: {students[i].roll}</p>
-
                 </div>
                 <div className="buttons">
                     <button className={`attendance-button present ${present ? 'active' : ''}`} onClick={() => toggleAttendance('present')}>
