@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Card.css'; // Import scoped CSS file
 
-const Card = ({ name, rollNo }) => {
+import FinalList from './FinalList';
+
+const Card = ({ attendanceRecords, updateAttendenceRecord }) => {
+
+    const [renderFinalList, setRenderFinalList] = useState(false);
+
     const [buttonClicked, setButtonClicked] = useState(false);
-    const [attendanceRecords, setAttendanceRecords] = useState([]); // State to store attendance records
+    // const [attendanceRecords, setAttendanceRecords] = useState([]); // State to store attendance records
 
     const [present, setPresent] = useState(false); // Default present status to false
     const [timeLeft, setTimeLeft] = useState(10); // Initial time left
@@ -23,7 +28,6 @@ const Card = ({ name, rollNo }) => {
         {
             roll: 4,
             name: "shikhar"
-
         },
         {
             roll: 5,
@@ -48,27 +52,38 @@ const Card = ({ name, rollNo }) => {
     useEffect(() => {
         if (timeLeft === 0) {
             // If timer reaches 0, record attendance as absent
-            recordAttendance('absent');
+            recordAttendance('absent', i);
             setTimeLeft(10);
         }
         if (buttonClicked === true) {
             // If button is clicked, record attendance based on present status
-            recordAttendance(present ? 'present' : 'absent');
+            recordAttendance(present ? 'present' : 'absent', i);
             setButtonClicked(false);
             setTimeLeft(10);
         }
-    }, [timeLeft, buttonClicked, present]);
+    }, [timeLeft, buttonClicked, present, i]);
 
     // Function to record attendance
-    const recordAttendance = (status) => {
+    const recordAttendance = (status, prevI) => {
         const record = {
-            name: students[i].name,
-            roll: students[i].roll,
+            name: students[prevI].name,
+            roll: students[prevI].roll,
             status: status
         };
-        setAttendanceRecords(prevRecords => [...prevRecords, record]);
+
+        updateAttendenceRecord(prevRecords => [...prevRecords, record]);
         setI((prevI) => (prevI + 1) % students.length);
-        console.log(attendanceRecords)
+        console.log(attendanceRecords);
+
+        // Call another component if `prevI` reaches the size of `students` array
+        if ((prevI + 1) === students.length) {
+            console.log("hello")
+            // Render AnotherComponent when all students are processed
+            // You may want to pass attendanceRecords or any other data to this component
+            // You can also conditionally render based on some state variable
+            // For now, I'm just rendering the component directly
+            return <FinalList attendanceRecords={attendanceRecords} />;
+        }
     };
 
     // Toggle Present/Absent status
