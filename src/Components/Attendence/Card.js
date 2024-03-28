@@ -3,7 +3,7 @@ import './Card.css'; // Import scoped CSS file
 
 import FinalList from './FinalList';
 
-const Card = ({ attendanceRecords, updateAttendenceRecord }) => {
+const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone }) => {
 
     const [renderFinalList, setRenderFinalList] = useState(false);
 
@@ -61,7 +61,21 @@ const Card = ({ attendanceRecords, updateAttendenceRecord }) => {
             setButtonClicked(false);
             setTimeLeft(10);
         }
-    }, [timeLeft, buttonClicked, present, i]);
+
+
+
+    }, [timeLeft, buttonClicked, present, i,]);
+
+    useEffect(() => {
+        console.log(i + " and" + students.length)
+
+        if ((i + 1) === students.length) {
+
+            updateAttendenceDone(true);
+
+        }
+    }, [i, students.length])
+
 
     // Function to record attendance
     const recordAttendance = (status, prevI) => {
@@ -76,14 +90,11 @@ const Card = ({ attendanceRecords, updateAttendenceRecord }) => {
         console.log(attendanceRecords);
 
         // Call another component if `prevI` reaches the size of `students` array
-        if ((prevI + 1) === students.length) {
-            console.log("hello")
-            // Render AnotherComponent when all students are processed
-            // You may want to pass attendanceRecords or any other data to this component
-            // You can also conditionally render based on some state variable
-            // For now, I'm just rendering the component directly
-            return <FinalList attendanceRecords={attendanceRecords} />;
-        }
+        // if ((prevI + 1) === students.length) {
+        //     console.log("hello")
+
+        //     return <FinalList attendanceRecords={attendanceRecords} />;
+        // }
     };
 
     // Toggle Present/Absent status
