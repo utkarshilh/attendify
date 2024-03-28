@@ -21,7 +21,7 @@ export default function Main() {
     return (
         <div>
             <h1>This is main page</h1>
-            {(attendanceDone === true) ? <FinalList /> : <Card attendanceRecords={attendanceRecords} updateAttendenceRecord={updateAttendenceRecord} updateAttendenceDone={updateAttendenceDone} />}
+            {(attendanceDone === true) ? <FinalList attendanceRecords={attendanceRecords} /> : <Card attendanceRecords={attendanceRecords} updateAttendenceRecord={updateAttendenceRecord} updateAttendenceDone={updateAttendenceDone} />}
         </div>
     )
 }
