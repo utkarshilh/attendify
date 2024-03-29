@@ -24,7 +24,9 @@ export default function FinalList({ attendanceRecords }) {
           ))}
         </tbody>
       </table>
-
+      <button>
+        submit
+      </button>
     </>
   );
 }
