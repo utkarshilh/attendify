@@ -2,13 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 
 export default function FinalList({ attendanceRecords }) {
-  console.log(JSON.stringify(attendanceRecords));
 
   const [records, setRecords] = useState(attendanceRecords);
   const handleStatusButtonClick = (index) => {
     const newRecord = [...records];
 
-    console.log("this is newRecord " + JSON.stringify(newRecord));
+
     // updating the current status just opposite of current status
     { (newRecord[index].status === 'present') ? newRecord[index].status = 'absent' : newRecord[index].status = 'present' }
 
