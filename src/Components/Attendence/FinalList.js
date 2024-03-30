@@ -1,14 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function FinalList({ attendanceRecords }) {
   console.log(JSON.stringify(attendanceRecords));
 
-
+  const [records, setRecords] = useState(attendanceRecords);
   const handleStatusButtonClick = (index) => {
+    const newRecord = [...records];
 
-    console.log(index);
+    console.log("this is newRecord " + JSON.stringify(newRecord));
+    // updating the current status just opposite of current status
+    { (newRecord[index].status === 'present') ? newRecord[index].status = 'absent' : newRecord[index].status = 'present' }
+
+    setRecords(newRecord);
   }
-
   return (
     <>
       <h1>Final List</h1>
@@ -21,7 +26,7 @@ export default function FinalList({ attendanceRecords }) {
           </tr>
         </thead>
         <tbody>
-          {attendanceRecords.map((item, index) => (
+          {records.map((item, index) => (
             <tr key={index}>
               <td>{item.roll}</td>
               <td colSpan={2}>{item.name}</td>
