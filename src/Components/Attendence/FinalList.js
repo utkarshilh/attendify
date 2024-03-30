@@ -3,6 +3,12 @@ import React from 'react';
 export default function FinalList({ attendanceRecords }) {
   console.log(JSON.stringify(attendanceRecords));
 
+
+  const handleStatusButtonClick = (index) => {
+
+    console.log(index);
+  }
+
   return (
     <>
       <h1>Final List</h1>
@@ -19,14 +25,13 @@ export default function FinalList({ attendanceRecords }) {
             <tr key={index}>
               <td>{item.roll}</td>
               <td colSpan={2}>{item.name}</td>
-              <td>{item.status}</td>
+
+              <td><button onClick={() => handleStatusButtonClick(index)} className={(item.status === 'present') ? 'btn btn-success' : 'btn btn-danger'} >{item.status}</button></td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button>
-        submit
-      </button>
+      <button className='btn btn-primary btn-lg'>Submit</button>
     </>
   );
 }
