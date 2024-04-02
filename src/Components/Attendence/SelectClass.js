@@ -9,6 +9,14 @@ const CardComponent = () => {
     const handleAttendance = () => {
         // Handle attendance logic here
 
+        if (year === '' || section === '' || subject === '') {
+            alert("please select all the values");
+            return;
+
+        }
+
+
+
 
 
 
