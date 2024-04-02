@@ -1,15 +1,17 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
+import './SelectClass.css'; // Unique CSS module for this component
 
-import './SelectClass.css'
-export default function SelectClass() {
-
+const CardComponent = () => {
     const [year, setYear] = useState('');
     const [section, setSection] = useState('');
     const [subject, setSubject] = useState('');
 
     const handleAttendance = () => {
         // Handle attendance logic here
+
+
+
+
         console.log('Attendance taken for:', { year, section, subject });
     };
 
@@ -19,33 +21,55 @@ export default function SelectClass() {
                 <h2>Take Attendance</h2>
                 <div className="input-group">
                     <label htmlFor="year">Year:</label>
-                    <input
-                        type="text"
+                    <select
                         id="year"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
-                    />
+                        className="custom-select"
+                    >
+                        <option value="">Select Year</option>
+                        <option value="1">Year 1</option>
+                        <option value="2">Year 2</option>
+                        <option value="3">Year 3</option>
+                        {/* Add more options as needed */}
+                    </select>
                 </div>
                 <div className="input-group">
                     <label htmlFor="section">Section:</label>
-                    <input
-                        type="text"
+                    <select
                         id="section"
                         value={section}
                         onChange={(e) => setSection(e.target.value)}
-                    />
+                        className="custom-select"
+                    >
+                        <option value="">Select Section</option>
+                        <option value="A">Section A</option>
+                        <option value="B">Section B</option>
+                        <option value="C">Section C</option>
+                        {/* Add more options as needed */}
+                    </select>
                 </div>
                 <div className="input-group">
                     <label htmlFor="subject">Subject:</label>
-                    <input
-                        type="text"
+                    <select
                         id="subject"
                         value={subject}
                         onChange={(e) => setSubject(e.target.value)}
-                    />
+                        className="custom-select"
+                    >
+                        <option value="">Select Subject</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                        <option value="English">English</option>
+                        {/* Add more options as needed */}
+                    </select>
                 </div>
-                <button onClick={handleAttendance}>Take Attendance</button>
+                <button onClick={handleAttendance} className="custom-button">
+                    Take Attendance
+                </button>
             </div>
         </div>
     );
-}
+};
+
+export default CardComponent;
