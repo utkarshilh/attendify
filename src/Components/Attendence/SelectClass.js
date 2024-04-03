@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SelectClass.css'; // Unique CSS module for this component
 
-const CardComponent = () => {
+const CardComponent = ({ isClassSelected, changeStatus }) => {
     const [year, setYear] = useState('');
     const [section, setSection] = useState('');
     const [subject, setSubject] = useState('');
@@ -14,8 +14,7 @@ const CardComponent = () => {
             return;
 
         }
-
-
+        changeStatus(!isClassSelected)
 
 
 
