@@ -102,7 +102,6 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
         setButtonClicked(true);
         setPresent(attendance === 'present' ? true : false);
     };
-
     return (
         <div className="card-container">
             <div className="card">
