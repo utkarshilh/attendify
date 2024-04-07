@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Card.css'; // Import scoped CSS file
+import axios from 'axios';
 
 import FinalList from './FinalList';
 
@@ -41,6 +42,20 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
 
     const [i, setI] = useState(0); // Initialize index i with 0
 
+    useEffect(() => {
+        axios.get('http://localhost:5001/getMainList').then(function (response) {
+            const { data } = response;
+            console.log(data)
+            setStudents(data);
+
+        })
+            .catch(error => {
+
+                console.log(error);
+
+            })
+    }, [])
+
     // Countdown timer effect
     useEffect(() => {
         const timer = setInterval(() => {
@@ -81,7 +96,7 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
     const recordAttendance = (status, prevI) => {
         const record = {
             name: students[prevI].name,
-            roll: students[prevI].roll,
+            roll: students[prevI].rollNo,
             status: status
         };
 
@@ -108,7 +123,7 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
                 <div className="info">
                     <h1>{timeLeft}</h1>
                     <p>Name: {students[i].name}</p>
-                    <p>Roll No: {students[i].roll}</p>
+                    <p>Roll No: {students[i].rollNo}</p>
                 </div>
                 <div className="buttons">
                     <button className={`attendance-button present ${present ? 'active' : ''}`} onClick={() => toggleAttendance('present')}>
