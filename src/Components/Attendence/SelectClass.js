@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import './SelectClass.css'; // Unique CSS module for this component
 
-const CardComponent = ({ isClassSelected, changeStatus }) => {
-    const [year, setYear] = useState('');
+const CardComponent = ({ isClassSelected, changeStatus, updateClass }) => {
+    const [classs, setClasss] = useState('');
     const [section, setSection] = useState('');
     const [subject, setSubject] = useState('');
 
     const handleAttendance = () => {
         // Handle attendance logic here
 
-        if (year === '' || section === '' || subject === '') {
+        if (classs === '' || section === '' || subject === '') {
             alert("please select all the values");
             return;
 
         }
+        updateClass({ classs, section, subject });
         changeStatus(!isClassSelected)
 
 
 
 
-        console.log('Attendance taken for:', { year, section, subject });
+        // console.log('Attendance taken for:', { year, section, subject });
     };
 
     return (
@@ -27,17 +28,17 @@ const CardComponent = ({ isClassSelected, changeStatus }) => {
             <div className="card">
                 <h2>Take Attendance</h2>
                 <div className="input-group">
-                    <label htmlFor="year">Year:</label>
+                    <label htmlFor="Class">Class:</label>
                     <select
-                        id="year"
-                        value={year}
-                        onChange={(e) => setYear(e.target.value)}
+                        id="classs"
+                        value={classs}
+                        onChange={(e) => setClasss(e.target.value)}
                         className="custom-select"
                     >
-                        <option value="">Select Year</option>
-                        <option value="1">Year 1</option>
-                        <option value="2">Year 2</option>
-                        <option value="3">Year 3</option>
+                        <option value="">Select Class</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3"> 3</option>
                         {/* Add more options as needed */}
                     </select>
                 </div>
