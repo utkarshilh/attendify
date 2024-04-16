@@ -15,27 +15,27 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
     const [timeLeft, setTimeLeft] = useState(10); // Initial time left
     const [students, setStudents] = useState([
         {
-            roll: 1,
+            rollNo: 1,
             name: "utkarsh"
         },
         {
-            roll: 2,
+            rollNo: 2,
             name: "harsh",
         },
         {
-            roll: 3,
+            rollNo: 3,
             name: "kiran"
         },
         {
-            roll: 4,
+            rollNo: 4,
             name: "shikhar"
         },
         {
-            roll: 5,
+            rollNo: 5,
             name: "shikhar"
         },
         {
-            roll: 6,
+            rollNo: 6,
             name: "hitj"
         }
     ])
@@ -43,9 +43,10 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
     const [i, setI] = useState(0); // Initialize index i with 0
 
     useEffect(() => {
-        axios.get('http://localhost:5001/getMainList').then(function (response) {
+        axios.post('http://localhost:5001/getMainList').then(function (response) {
             const { data } = response;
-            console.log(data)
+
+            console.log("this is students " + JSON.stringify(students))
             setStudents(data);
 
         })
@@ -95,6 +96,7 @@ const Card = ({ attendanceRecords, updateAttendenceRecord, updateAttendenceDone 
     // Function to record attendance
     const recordAttendance = (status, prevI) => {
         const record = {
+            studentId: students[prevI].studentId,
             name: students[prevI].name,
             roll: students[prevI].rollNo,
             status: status
