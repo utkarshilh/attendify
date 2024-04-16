@@ -2,9 +2,14 @@ import React from 'react'
 import Card from './Card'
 import { useState } from 'react';
 import FinalList from './FinalList';
-export default function Main() {
+export default function Main({ classs, section, subject }) {
+
     const [attendanceRecords, setAttendanceRecords] = useState([]);
+
+
     const [attendanceDone, setAttendanceDone] = useState(false);
+
+
 
 
     const updateAttendenceRecord = (newState) => {
@@ -21,7 +26,7 @@ export default function Main() {
     return (
         <div>
             <h1>This is main page</h1>
-            {(attendanceDone === true) ? <FinalList attendanceRecords={attendanceRecords} /> : <Card attendanceRecords={attendanceRecords} updateAttendenceRecord={updateAttendenceRecord} updateAttendenceDone={updateAttendenceDone} />}
+            {(attendanceDone === true) ? <FinalList attendanceRecords={attendanceRecords} classs={classs} subject={subject} section={section} /> : <Card attendanceRecords={attendanceRecords} updateAttendenceRecord={updateAttendenceRecord} updateAttendenceDone={updateAttendenceDone} />}
         </div>
     )
 }
