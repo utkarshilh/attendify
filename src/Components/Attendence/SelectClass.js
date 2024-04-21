@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './SelectClass.css'; // Unique CSS module for this component
 
 const CardComponent = ({ isClassSelected, changeStatus, updateClass }) => {
+
+    console.log("this is change status " + changeStatus);
     const [classs, setClasss] = useState('');
     const [section, setSection] = useState('');
     const [subject, setSubject] = useState('');

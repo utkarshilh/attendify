@@ -38,7 +38,7 @@ export default function IsClassSelected() {
 
     return (
         <div>
-            {(isClassSelected === true) ? <Main classs={classs} section={section} subject={subject} /> : <SelectClass changeStatus={changeStatus} isClassSelected={isClassSelected} updateClass={updateClass} />}
+            {(isClassSelected === true) ? <Main classs={classs} section={section} subject={subject} changeStatus={changeStatus} /> : <SelectClass changeStatus={changeStatus} isClassSelected={isClassSelected} updateClass={updateClass} />}
 
         </div>
     )

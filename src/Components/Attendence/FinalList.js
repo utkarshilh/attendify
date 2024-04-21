@@ -3,8 +3,11 @@ import React from 'react';
 
 import { useState } from 'react';
 
-export default function FinalList({ attendanceRecords, classs, section, subject }) {
+export default function FinalList({ attendanceRecords, classs, section, subject, changeStatus }) {
+
   const [records, setRecords] = useState(attendanceRecords);
+
+  console.log("change status" + changeStatus)
 
   async function handleSubmit() {
 
@@ -21,6 +24,7 @@ export default function FinalList({ attendanceRecords, classs, section, subject 
 
       if (response.status === 200) {
         alert("Successfully inserted");
+        changeStatus(false)
 
       }
       else {
@@ -28,7 +32,7 @@ export default function FinalList({ attendanceRecords, classs, section, subject 
 
       }
     } catch (error) {
-      alert("Something Went Wrong")
+      alert(error);
 
     }
     finally {
