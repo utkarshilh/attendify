@@ -19,9 +19,16 @@ export default function FinalList({ attendanceRecords, classs, section, subject 
     try {
       const response = await axios.post('http://localhost:5001/submitAttendance', { records, classs, subject, section }, { timeout: 5000 })
 
-      console.log(response)
+      if (response.status === 200) {
+        alert("Successfully inserted");
+
+      }
+      else {
+        alert("something went wrong")
+
+      }
     } catch (error) {
-      console.log("this is not working ")
+      alert("Something Went Wrong")
 
     }
     finally {
