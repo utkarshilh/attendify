@@ -1,0 +1,43 @@
+/* Navbar.css */
+.navbar {
+    width: 250px;
+    height: 100%;
+    background-color: #673AB7; /* Set navbar background color to deep purple */
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    padding-top: 20px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar li {
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid #555; /* Add a border bottom to separate menu items */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s; /* Add transition for smoother color change */
+}
+
+.navbar a:hover {
+    color: #ffcc00; /* Change color on hover */
+}
+
+.navbar .active {
+    background-color: #555; /* Highlight active menu item */
+}
+
+.content {
+    margin-left: 250px; /* Adjusted width of the navbar */
+    padding: 20px;
+}
