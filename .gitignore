@@ -50,3 +50,5 @@ package-lock.json
 package.json
 package-lock.json
 .gitignore
+package-lock.json
+package.json
