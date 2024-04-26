@@ -1,6 +1,5 @@
-/* Navbar.css */
 .navbar {
-    width: 250px;
+    width: 20%;
     height: 100%;
     background-color: #673AB7; /* Set navbar background color to deep purple */
     color: #fff;
@@ -11,9 +10,16 @@
     padding-top: 20px;
 }
 
+.user-info {
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid #555; /* Add a border bottom to separate user info from menu items */
+}
+
 .navbar ul {
     list-style-type: none;
     padding: 0;
+    margin: 0; /* Remove default margin */
 }
 
 .navbar li {
@@ -38,6 +44,6 @@
 }
 
 .content {
-    margin-left: 250px; /* Adjusted width of the navbar */
+    margin-left: 20%; /* Adjusted width of the navbar */
     padding: 20px;
 }
