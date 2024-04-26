@@ -16,14 +16,36 @@ export default function Navbar() {
 
         <nav className="navbar">
 
-            <div className="user-info">
-                <p>Welcome, {userName}</p> {/* Display user's name */}
-            </div>
+            {/* <div className="user-info">
+                <p>Welcome, {userName}</p>
+            </div> */}
 
             <ul>
+                <li>   <p>Welcome, {userName}</p></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+
+                <li></li>
+
+
                 <li><Link to="/">Dashboard</Link></li>
                 <li><Link to="/take-attendance">Take Attendance</Link></li>
                 <li><Link to="/view-attendance">View Attendance</Link></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+
 
             </ul>
 
