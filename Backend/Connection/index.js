@@ -2,6 +2,8 @@ const mysql = require('mysql');
 const express = require('express');
 const cors = require("cors");
 const bodyParser = require('body-parser');
+const { Db } = require('mongodb');
+const { json } = require('body-parser');
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -138,6 +140,7 @@ app.post('/submitAttendance', async (req, res) => {
     }
 });
 
+
 function executeQuery(query, values) {
     return new Promise((resolve, reject) => {
         con.query(query, values, (error, result, field) => {
@@ -149,6 +152,39 @@ function executeQuery(query, values) {
         });
     });
 }
+
+
+
+//logic for login 
+app.post('/login', (req, res) => {
+
+    console.log('i was executed')
+
+    const username = req.body.username;
+    const password = req.body.password;
+    const userType = req.body.userType;
+
+    const Squery = "select username, usertype from attendify.login where username = ? and password = ? and userType = ? ";
+    con.query(Squery, [username, password, userType], function (err, result) {
+        if (err) {
+            console.log(err);
+            res.status(400).send({ error: " Someting went wrong" })
+            return;
+
+        }
+        if (result.length == 0) {
+            console.log("hello");
+            res.status(400).send({ erro: " someting went wrong" })
+            return;
+        }
+        res.send(result);
+        // console.log(result);
+        // console.log("Result: " + JSON.stringify((result)));
+    });
+
+})
+
+
 
 
 
