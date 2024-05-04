@@ -1,17 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import './Login.css'; // Import CSS file for styling
+import './Login.css'; // Import CSS module for styling
 
 const Login = (props) => {
-    console.log("this is props from  login " + JSON.stringify(props));
+    console.log("this is props from login " + JSON.stringify(props));
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('teacher');
 
     async function handleLogin(e) {
         e.preventDefault();
-
-
 
         try {
             const response = await axios.post('http://localhost:5001/login', { username, password, userType }, { timeout: 5000 });
@@ -23,8 +21,6 @@ const Login = (props) => {
 
             alert(error);
         }
-
-
     }
 
     return (
