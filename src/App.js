@@ -12,7 +12,7 @@ import Login from './Components/LoginPage/Login';
 import Main from './Components/Attendence/Main';
 
 import Navbar from './Components/Dashboard/Navbar';
-// import SelectClass from './Components/Attendence/SelectClass';
+import Test from './Components/Test/test';
 
 
 
@@ -30,10 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <IsClassSelected /> */}
-      {/* <Landingpage /> */}
 
-      {(currUser === '') ? <Login changeUser={changeUser} /> : <Landingpage />}
+      {/* {(currUser === '') ? <Login changeUser={changeUser} /> : <Landingpage />} */}
+      <Test />
 
     </div>
   );
