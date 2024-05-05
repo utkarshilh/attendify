@@ -10,9 +10,8 @@ import Login from './Components/LoginPage/Login';
 
 
 import Main from './Components/Attendence/Main';
-
 import Navbar from './Components/Dashboard/Navbar';
-import Test from './Components/Test/test';
+import Test from './Components/Test/Test';
 
 
 
