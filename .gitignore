@@ -52,3 +52,4 @@ package-lock.json
 .gitignore
 package-lock.json
 package.json
+tailwind.config.js
