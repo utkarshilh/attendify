@@ -17,17 +17,17 @@ export default function Landingpage() {
     };
     return (
         <Router>
-            <div className="container">
-                <Navbar />
-                <div className="content">
-                    <Routes>
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/take-attendance" element={<IsClassSelected />} />
-                        <Route path="/view-attendance" element={<Viewattendance />} />
-                    </Routes>
-                </div>
 
+            <Navbar />
+            <div className="content">
+                <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/take-attendance" element={<IsClassSelected />} />
+                    <Route path="/view-attendance" element={<Viewattendance />} />
+                </Routes>
             </div>
+
+
         </Router>
     )
 }
