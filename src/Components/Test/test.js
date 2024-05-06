@@ -37,7 +37,7 @@ export default function Test() {
                     <img src="user-icon.png" alt="User Icon" />
                 </div>
                 <div className="sidebar-content">
-                    <div className="sidebar-item">Home</div>
+                    <div className="sidebar-item">Dashboard</div>
                     <div className="sidebar-item">Trending</div>
                     <div className="sidebar-item">Subscriptions</div>
                     <div className="sidebar-item">Library</div>
