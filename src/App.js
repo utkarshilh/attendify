@@ -31,7 +31,8 @@ function App() {
     <div className="App">
 
       {/* {(currUser === '') ? <Login changeUser={changeUser} /> : <Landingpage />} */}
-      <Test />
+      {/* <Test /> */}
+      <Landingpage />
 
     </div>
   );
