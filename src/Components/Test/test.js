@@ -34,7 +34,8 @@ export default function Test() {
             )}
             <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="user-icon">
-                    <img src="user-icon.png" alt="User Icon" />
+                    {/* <i class="bi bi-person-circle">utkarsh</i> */}
+                    {/* <h1>hello are you</h1> */}
                 </div>
                 <div className="sidebar-content">
                     <div className="sidebar-item">Dashboard</div>
