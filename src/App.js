@@ -34,6 +34,10 @@ function App() {
       {/* <Test /> */}
       <Landingpage />
 
+      {/* {<Navbar />} */}
+
+
+
     </div>
   );
 }
