@@ -54,7 +54,7 @@ export default function FinalList({ attendanceRecords, classs, section, subject,
 
   }
   return (
-    <>
+    <div className="ml-64 p-4">
       <h1>Final List</h1>
       <table className='table table-bordered'>
         <thead>
@@ -76,6 +76,6 @@ export default function FinalList({ attendanceRecords, classs, section, subject,
         </tbody>
       </table>
       <button className='btn btn-primary btn-lg' onClick={handleSubmit}>Submit</button>
-    </>
+    </div>
   );
 }
